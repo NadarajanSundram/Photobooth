@@ -1,0 +1,579 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(135deg, rgba(33, 95, 83, 0.12), transparent 34%),
+    linear-gradient(315deg, rgba(211, 82, 55, 0.15), transparent 38%),
+    #f8f3ea;
+  color: #17231f;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.photobooth-app {
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 16px 0;
+  background: rgba(248, 243, 234, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.brand-lockup,
+.ghost-button,
+.primary-button,
+.eyebrow,
+.style-switcher,
+.style-switcher button,
+.album-actions,
+.album-actions button,
+.caption-row,
+.download-photo {
+  display: flex;
+  align-items: center;
+}
+
+.brand-lockup {
+  gap: 12px;
+}
+
+.brand-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid #ddcfbc;
+  border-radius: 14px;
+  background: #fffaf2;
+  color: #215f53;
+  box-shadow: 0 16px 40px rgba(66, 53, 35, 0.11);
+}
+
+.brand-lockup strong,
+.brand-lockup span {
+  display: block;
+}
+
+.brand-lockup strong {
+  font-size: 1.05rem;
+}
+
+.brand-lockup span {
+  color: #6e665d;
+  font-size: 0.88rem;
+}
+
+.ghost-button,
+.primary-button,
+.album-actions button {
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.ghost-button {
+  padding: 0 15px;
+  border: 1px solid #ddcfbc;
+  background: #fffaf2;
+  color: #215f53;
+}
+
+.studio-shell {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.studio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 28px;
+  align-items: stretch;
+  padding: 38px 0 24px;
+}
+
+.hero-copy,
+.cover-preview,
+.control-panel,
+.album-frame,
+.empty-album,
+.login-panel {
+  border: 1px solid #ddcfbc;
+  border-radius: 18px;
+  background: rgba(255, 250, 242, 0.78);
+  box-shadow: 0 24px 80px rgba(66, 53, 35, 0.12);
+}
+
+.hero-copy {
+  padding: clamp(24px, 5vw, 54px);
+}
+
+.eyebrow {
+  gap: 7px;
+  margin-bottom: 14px;
+  color: #b44930;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title-input {
+  width: 100%;
+  max-width: 760px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17231f;
+  font-size: clamp(2.45rem, 7vw, 5.6rem);
+  font-weight: 900;
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.hero-copy p {
+  max-width: 610px;
+  margin-top: 20px;
+  color: #625c54;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.cover-preview {
+  min-height: 360px;
+  overflow: hidden;
+  background-color: #21342f;
+  background-position: center;
+  background-size: cover;
+}
+
+.cover-preview div {
+  display: grid;
+  height: 100%;
+  min-height: 360px;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: #fffaf2;
+  text-align: center;
+}
+
+.control-panel {
+  display: grid;
+  grid-template-columns: 1.1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+}
+
+.control-panel.viewer-panel {
+  grid-template-columns: 1fr auto;
+}
+
+.upload-zone {
+  position: relative;
+  display: grid;
+  min-height: 112px;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  border: 1px dashed #b8a996;
+  border-radius: 14px;
+  background: #fffdf8;
+  color: #215f53;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-zone small {
+  color: #716a61;
+  font-weight: 700;
+}
+
+.upload-zone input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.style-switcher {
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid #ddcfbc;
+  border-radius: 14px;
+  background: #fffaf2;
+}
+
+.style-switcher button {
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #625c54;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.style-switcher button.active {
+  background: #215f53;
+  color: #fff;
+}
+
+.album-actions {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.album-actions span {
+  color: #625c54;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.album-actions button,
+.primary-button {
+  padding: 0 16px;
+  background: #b44930;
+  color: #fff;
+}
+
+.empty-album {
+  display: grid;
+  min-height: 330px;
+  margin-top: 18px;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+.empty-album svg {
+  color: #215f53;
+}
+
+.empty-album h2,
+.login-art h1,
+.login-card h2 {
+  margin: 0;
+  color: #17231f;
+}
+
+.empty-album p,
+.login-art p {
+  max-width: 460px;
+  margin: 0;
+  color: #625c54;
+  line-height: 1.65;
+}
+
+.album-frame {
+  margin-top: 18px;
+  padding: clamp(16px, 3vw, 28px);
+}
+
+.album-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  color: #215f53;
+  font-weight: 900;
+}
+
+.album-heading span {
+  color: #17231f;
+  font-size: 1.25rem;
+}
+
+.photo-collection {
+  display: grid;
+  gap: 18px;
+}
+
+.gallery .photo-collection {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.polaroid .photo-collection {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.film .photo-collection {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 32%);
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 16px;
+  background: #202622;
+  scroll-snap-type: x mandatory;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddcfbc;
+  border-radius: 16px;
+  background: #fffdf8;
+}
+
+.gallery .photo-card:nth-child(5n + 1) {
+  grid-row: span 2;
+}
+
+.polaroid .photo-card {
+  padding: 12px 12px 18px;
+  transform: rotate(-1deg);
+  box-shadow: 0 18px 32px rgba(66, 53, 35, 0.14);
+}
+
+.polaroid .photo-card:nth-child(even) {
+  transform: rotate(1.4deg);
+}
+
+.film .photo-card {
+  border-color: #343b36;
+  border-radius: 8px;
+  background: #fffaf2;
+  scroll-snap-align: start;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery .photo-card:nth-child(5n + 1) img {
+  height: 100%;
+  min-height: 420px;
+}
+
+.polaroid .photo-card img {
+  border-radius: 10px;
+}
+
+.film .photo-card img {
+  aspect-ratio: 3 / 4;
+}
+
+.remove-photo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(23, 35, 31, 0.74);
+  color: #fff;
+}
+
+.caption-row {
+  gap: 10px;
+  padding: 12px;
+}
+
+.caption-row span {
+  color: #b44930;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.caption-row input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #17231f;
+  font-weight: 800;
+}
+
+.caption-row input[readonly],
+.title-input[readonly] {
+  cursor: default;
+}
+
+.download-photo {
+  justify-content: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #215f53;
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 22px;
+}
+
+.login-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  width: min(960px, 100%);
+  overflow: hidden;
+}
+
+.login-art {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  min-height: 560px;
+  padding: clamp(28px, 6vw, 58px);
+  background:
+    linear-gradient(rgba(33, 95, 83, 0.74), rgba(33, 95, 83, 0.74)),
+    url("./assets/hero.png") center / cover;
+  color: #fffaf2;
+}
+
+.login-art h1 {
+  color: #fffaf2;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.login-art p {
+  color: rgba(255, 250, 242, 0.86);
+}
+
+.login-card {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  padding: clamp(24px, 5vw, 42px);
+  background: #fffaf2;
+}
+
+.login-card h2 {
+  font-size: 2rem;
+}
+
+.login-card label {
+  display: grid;
+  gap: 8px;
+  color: #625c54;
+  font-weight: 900;
+}
+
+.login-card input {
+  min-height: 48px;
+  padding: 0 13px;
+  border: 1px solid #ddcfbc;
+  border-radius: 10px;
+  outline: 0;
+  background: #fffdf8;
+  color: #17231f;
+}
+
+.error-text {
+  margin: 0;
+  color: #b44930;
+  font-weight: 900;
+}
+
+@media (max-width: 980px) {
+  .studio-hero,
+  .control-panel,
+  .login-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery .photo-collection,
+  .polaroid .photo-collection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .style-switcher {
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  .album-actions {
+    justify-content: space-between;
+  }
+
+  .login-art {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ghost-button {
+    width: 100%;
+  }
+
+  .cover-preview,
+  .cover-preview div {
+    min-height: 280px;
+  }
+
+  .gallery .photo-collection,
+  .polaroid .photo-collection {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery .photo-card:nth-child(5n + 1) img {
+    min-height: 0;
+  }
+
+  .film .photo-collection {
+    grid-auto-columns: minmax(235px, 86%);
+  }
+
+  .album-heading {
+    flex-direction: column;
+  }
+}
